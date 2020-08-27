@@ -8,6 +8,6 @@ namespace ExceptionMiddleware
 {
   public interface IExceptionHandler
   {
-    Task<(HttpContext, string)> Process(Exception ex, HttpContext context);
+    Task<string> Process(Exception ex, HttpContext context);
   }
 }

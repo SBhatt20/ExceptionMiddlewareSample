@@ -11,7 +11,7 @@ namespace ExceptionMiddlewareSample
  
   public class MiddlewareExceptionHandler : IExceptionHandler
   {
-    public async Task<(HttpContext,string)> Process(Exception ex, HttpContext context)
+    public async Task<string> Process(Exception ex, HttpContext context)
     {
       string result = "";
       switch (ex.GetType().Name)
@@ -31,10 +31,10 @@ namespace ExceptionMiddlewareSample
           break;
       }
 
-      return (context, result);
+      return result;
     }
 
-    private static string BuildResultold(dynamic message, string errorCode = "Unhandled Error")
+    private static string BuildResult(dynamic message, string errorCode = "Unhandled Error")
     {
       return JsonConvert.SerializeObject(
           new
@@ -44,7 +44,7 @@ namespace ExceptionMiddlewareSample
           });
     }
 
-    private static string BuildResult(dynamic message, string errorCode = "Error")
+    private static string BuildResultaaa(dynamic message, string errorCode = "Error")
     {
       return JsonConvert.SerializeObject(
           new

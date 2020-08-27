@@ -34,7 +34,7 @@ namespace ExceptionMiddleware
         string result;
         context.Response.Clear();
 
-        (context, result) = await _exceptionHandler.Process(ex, context).ConfigureAwait(false);
+        result = await _exceptionHandler.Process(ex,context).ConfigureAwait(false);
         context.Response.ContentType = "application/json";
 
         await context.Response.WriteAsync(result).ConfigureAwait(false);
