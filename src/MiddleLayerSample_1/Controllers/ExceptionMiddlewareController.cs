@@ -3,32 +3,18 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
 
-namespace ExceptionMiddlewareSample.Controllers
+namespace ExceptionMiddlewareSample_1.Api.Controllers
 {
   [Produces("application/vnd.hal+json")]
   [Route("[controller]")]
-  public class WeatherForecastController : ControllerBase
+  public class ExceptionMiddlewareController : ControllerBase
   {
-    private static readonly string[] Summaries = new[]
-    {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
+    private readonly ILogger<ExceptionMiddlewareController> _logger;
 
-    private readonly ILogger<WeatherForecastController> _logger;
-
-    public WeatherForecastController(ILogger<WeatherForecastController> logger)
+    public ExceptionMiddlewareController(ILogger<ExceptionMiddlewareController> logger)
     {
       _logger = logger;
     }
-
-    //[HttpGet("{id}")]
-    //public async Task<IActionResult> GetError(string id = null)
-    //{
-    //  if(id == null)
-    //    BadRequest();
-
-    //  return Ok("");
-    //}
 
     [Produces("application/vnd.hal+json", "application / json")]
     [HttpGet]

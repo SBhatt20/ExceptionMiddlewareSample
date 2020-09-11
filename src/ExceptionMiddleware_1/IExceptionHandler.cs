@@ -1,10 +1,8 @@
 using Microsoft.AspNetCore.Http;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace ExceptionMiddleware
+namespace ExceptionMiddleware_1
 {
   public interface IExceptionHandler
   {

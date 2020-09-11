@@ -1,11 +1,8 @@
-using ExceptionMiddleware;
 using Microsoft.AspNetCore.Http;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
-namespace ExceptionMiddleware
+namespace ExceptionMiddleware_1
 {
   public class ExceptionMiddleware
   {

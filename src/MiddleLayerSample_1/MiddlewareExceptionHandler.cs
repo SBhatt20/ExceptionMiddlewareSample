@@ -1,4 +1,4 @@
-using ExceptionMiddleware;
+using ExceptionMiddleware_1;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using System;
@@ -6,9 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ExceptionMiddlewareSample
+namespace ExceptionMiddlewareSample_1.Api
 {
- 
+
   public class MiddlewareExceptionHandler : IExceptionHandler
   {
     public async Task<string> Process(Exception ex, HttpContext context)
@@ -41,6 +41,7 @@ namespace ExceptionMiddlewareSample
           {
             errors = message,//ex.ValidationMessages
             errorCode = errorCode,
+            RequestID = "10202"
           });
     }
 

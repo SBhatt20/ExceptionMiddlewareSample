@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace ExceptionMiddlewareSample
+namespace ExceptionMiddlewareSample_1.Api
 {
   public class Program
   {
