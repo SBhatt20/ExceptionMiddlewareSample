@@ -13,7 +13,7 @@ You can refer ExceptionMiddlewareSample_1.Api Project to see the Implementation 
  public class MiddlewareExceptionHandler : IExceptionHandler
  {
      
-     public async Task<string> Process(Exception ex, HttpContext context)
+     public async Task<string> HandleException(Exception ex, HttpContext context)
      
      {
   
@@ -21,30 +21,24 @@ You can refer ExceptionMiddlewareSample_1.Api Project to see the Implementation 
       switch (ex.GetType().Name)
       {
       case "ArgumentNullException":
-        result = BuildResult(ex.Message);
+        result = ResultHandler(ex.Message);
         context.Response.StatusCode = StatusCodes.Status400BadRequest;
         break;
-      case "ValidationException":
-          context.Response.StatusCode = StatusCodes.Status422UnprocessableEntity;
-          List<string> errors = ex.Message.Split("\r\n").ToList();
-          result = BuildResult(errors);
-          break;        
       default:
           context.Response.StatusCode = StatusCodes.Status500InternalServerError;
-          result = BuildResult(ex.Message);
+          result = ResultHandler(ex.Message);
           break;
       }
       return result;
     }
     
-    private static string BuildResult(dynamic message, string errorCode = "Unhandled Error")
+    private static string ResultHandler(dynamic message, string eCode = "Default Error")
     {
       return JsonConvert.SerializeObject(
         new
           {
-            errors = message,//ex.ValidationMessages
-            errorCode = errorCode,
-            RequestID = "10202"
+            message = message,//ex.ValidationMessages
+            code = eCode
           });
      }
   }
@@ -60,9 +54,39 @@ You can refer ExceptionMiddlewareSample_2.Api Project to see the implementation.
 
 StartUp.cs
 
-  app.UseCustomExceptionMiddleware((ex,context)=> Process(ex, context));
+  app.UseCustomExceptionMiddleware((ex,context)=> HandleException(ex, context));
  
-  Create a new Method  
+  Create a new Method like below
+  
+      public string HandleException(Exception ex, HttpContext context)
+    {
+      string result = "";
+      switch (ex.GetType().Name)
+      {
+        case "ArgumentNullException":
+          result = BuildResult(ex.Message);
+          context.Response.StatusCode = StatusCodes.Status400BadRequest;
+          break;
+        default:
+          context.Response.StatusCode = StatusCodes.Status500InternalServerError;
+          result = BuildResult(ex.Message);
+          break;
+      }
+
+      return result;
+    }
+
+    private static string BuildResult(dynamic message, string errorCode = "Default Error")
+    {
+      return JsonConvert.SerializeObject(
+          new
+          {
+            myerrors = message,
+            myerrorCode = errorCode
+          });
+    }
+
+  }
 
 # NuGet
 https://www.nuget.org/packages/ExceptionMiddleware_1/1.0.0
