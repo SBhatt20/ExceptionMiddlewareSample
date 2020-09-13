@@ -11,3 +11,9 @@ You can refer ExceptionMiddlewareSample_1.Api Project to see the Implementation 
 #ExceptionMiddleware_2
 In the solution you need to provide Func<> (delegate) to process the Exceptions.
 You can refer ExceptionMiddlewareSample_2.Api Project to see the implementation.
+
+# NuGet
+https://www.nuget.org/packages/ExceptionMiddleware_1/1.0.0
+
+Package Manager
+Install-Package ExceptionMiddleware_1 -Version 1.0.0
