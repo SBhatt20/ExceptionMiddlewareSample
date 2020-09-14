@@ -1,6 +1,7 @@
 # ExceptionMiddlewareSample
-How to apply custom Exception Middleware (.net core) 
-How to write test cases of Middleware
+With the help of this code you can understand below
+- How to apply custom Exception Middleware (.net core) 
+- How to write test cases of Middleware
 
 There are 2 samples to show that how we can create / use custom Exception Middleware
 
