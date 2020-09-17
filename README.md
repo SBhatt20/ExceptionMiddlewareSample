@@ -5,12 +5,13 @@ With the help of this code you can understand below
 
 There are 2 samples to show that how we can create / use custom Exception Middleware
 
-# ExceptionMiddleware_1
+## ExceptionMiddleware_1
 In the solution  you need to implement IExceptionHandler as a custom Exception Handler and Exception Handler will call the Process Method of Object (which implements IExceptionHandler).
 You can refer ExceptionMiddlewareSample_1.Api Project to see the Implementation of IExceptionHandler
 
-#IExceptionHandler Implementation
+#### IExceptionHandler Implementation
 
+```
  public class MiddlewareExceptionHandler : IExceptionHandler
  {
      
@@ -43,23 +44,30 @@ You can refer ExceptionMiddlewareSample_1.Api Project to see the Implementation 
           });
      }
   }
-  
-StartUp.cs
 
+```
+
+#### StartUp.cs
+
+```
  app.UseCustomExceptionMiddleware();
+```
 
-# ExceptionMiddleware_2
+## ExceptionMiddleware_2
 
 In the solution you need to provide Func<> (delegate) to process the Exceptions.
 You can refer ExceptionMiddlewareSample_2.Api Project to see the implementation.
 
-StartUp.cs
+#### StartUp.cs
 
+```
   app.UseCustomExceptionMiddleware((ex,context)=> HandleException(ex, context));
- 
-  Create a new Method like below
-  
-      public string HandleException(Exception ex, HttpContext context)
+```
+
+#### Create a new Method like below
+
+```
+    public string HandleException(Exception ex, HttpContext context)
     {
       string result = "";
       switch (ex.GetType().Name)
@@ -88,9 +96,10 @@ StartUp.cs
     }
 
   }
+```
 
-# NuGet
+## NuGet
 https://www.nuget.org/packages/ExceptionMiddleware_1/1.0.0
 
-Package Manager
+### Package Manager
 Install-Package ExceptionMiddleware_1 -Version 1.0.0
