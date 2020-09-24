@@ -4,6 +4,10 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Shrikant Bhatt</Authors>
+    <RepositoryUrl>https://github.com/SBhatt20/ExceptionMiddlewareSample/tree/master/src/ExceptionMiddleware_2</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReleaseNotes>Details provided for Licensing and Repository</PackageReleaseNotes>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
