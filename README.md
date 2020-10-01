@@ -103,3 +103,5 @@ https://www.nuget.org/packages/ExceptionMiddleware_1/1.0.0
 
 ### Package Manager
 Install-Package ExceptionMiddleware_1 -Version 1.0.0
+
+![](error.gif)
